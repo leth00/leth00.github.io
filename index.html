@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Odliczanie czasu</title>
+  </head>
+  <body>
+    <h1>Od godziny 19:00, 18 grudnia 2022 minęło:</h1>
+    <p id="timer"></p>
+    <script>
+      // Ustawiamy datę początkową
+      var startDate = new Date("December 18, 2022 19:00:00").getTime();
+
+      // Ustawiamy interwał odświeżania
+      var refreshInterval = setInterval(function() {
+
+        // Obliczamy czas od daty początkowej
+        var now = new Date().getTime();
+        var timeElapsed = now - startDate;
+
+        // Obliczamy dni, godziny, minuty i sekundy
+        var days = Math.floor(timeElapsed / (1000 * 60 * 60 * 24));
+        var hours = Math.floor((timeElapsed % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        var minutes = Math.floor((timeElapsed % (1000 * 60 * 60)) / (1000 * 60));
+        var seconds = Math.floor((timeElapsed % (1000 * 60)) / 1000);
+
+        // Wyświetlamy wynik na stronie
+        document.getElementById("timer").innerHTML = days + " dni " + hours + " godzin " + minutes + " minut " + seconds + " sekund";
+
+      }, 1000); // odświeżamy co sekundę
+    </script>
+  </body>
+</html>
